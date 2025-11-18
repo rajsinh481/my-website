@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sindhav Rajsinh - Portfolio</title>
+
+<style>
+/* ==== THEME VARIABLES (DARK DEFAULT) ==== */
+:root {
+    --bg-color: #000;
+    --text-color: #fff;
+    --accent-color: #00e6b8;
+    --card-bg: #0d0d0d;
+    --shadow-glow: 0px 0px 15px #00e6b8;
+}
+
+/* ==== LIGHT THEME ==== */
+.light-theme {
+    --bg-color: #f5fffd;
+    --text-color: #000;
+    --accent-color: #00b894;
+    --card-bg: #ffffff;
+    --shadow-glow: 0px 0px 15px #00b894;
+}
+
+/* GLOBAL */
+body {
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    display: flex;
+    transition: 0.4s ease-in-out;
+    scroll-behavior: smooth;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: var(--card-bg);
+    padding: 20px;
+    border-right: 2px solid var(--accent-color);
+    position: fixed;
+    animation: slideLeft 1s ease;
+}
+
+@keyframes slideLeft {
+    from {transform: translateX(-100px); opacity: 0;}
+    to {transform: translateX(0); opacity: 1;}
+}
+
+.sidebar h2 {
+    text-align: center;
+    color: var(--accent-color);
+    animation: fadeIn 1s ease;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px;
+    margin: 15px 0;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: var(--accent-color);
+    color: black;
+    transform: translateX(8px);
+}
+
+/* MAIN CONTENT */
+.content {
+    margin-left: 270px;
+    padding: 20px;
+    width: calc(100% - 270px);
+}
+
+/* SECTIONS */
+section {
+    background: var(--card-bg);
+    margin: 20px 0;
+    padding: 40px 30px;
+    border-radius: 12px;
+    border: 1px solid var(--accent-color);
+    animation: fadeInUp 1s ease;
+}
+
+/* Fade-in from bottom */
+@keyframes fadeInUp {
+    from {opacity: 0; transform: translateY(40px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* HEADINGS */
+h2 {
+    color: var(--accent-color);
+    letter-spacing: 1px;
+    font-size: 28px;
+}
+
+/* PROFILE IMAGE */
+.profile img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 4px solid var(--accent-color);
+    transition: 0.4s ease;
+}
+
+.profile img:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-glow);
+}
+
+/* BUTTON */
+.resume-btn {
+    background: var(--accent-color);
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.resume-btn:hover {
+    background: #00f0c9;
+    transform: scale(1.05);
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+table, th, td {
+    border: 1px solid var(--accent-color);
+    padding: 12px;
+}
+
+th {
+    background: var(--accent-color);
+    color: black;
+}
+
+/* PROJECT CARDS */
+.projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project-card {
+    width: 300px;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    transition: 0.4s ease;
+    animation: fadeInUp 1s;
+}
+
+.project-card:hover {
+    transform: scale(1.07);
+    box-shadow: var(--shadow-glow);
+    border-color: #00f5ce;
+}
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: var(--accent-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+    .content {
+        margin-left: 210px;
+    }
+}
+@media (max-width: 600px) {
+    .sidebar {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 2px solid var(--accent-color);
+    }
+    .content {
+        margin-left: 0;
+        margin-top: 210px;
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- THEME TOGGLE -->
+<button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Menu</h2>
+    <a href="#profile">Profile</a>
+    <a href="#myself">Myself</a>
+    <a href="#studies">Studies</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#career">Career</a>
+    <a href="#contact">Contact</a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+    <!-- PROFILE SECTION -->
+    <section id="profile" class="profile">
+        <center>
+            <img src="your-photo.jpg" alt="Profile Photo">
+            <h2>Hi, I'm Sindhav Rajsinh</h2>
+            <a href="resume.pdf" download class="resume-btn">📄 Download Resume</a>
+        </center>
+    </section>
+
+    <!-- MYSELF -->
+    <section id="myself">
+        <h2>Myself</h2>
+        <p>
+            Hello! I’m <b>Sindhav Rajsinh</b>, an enthusiastic learner and aspiring software developer.  
+            I am passionate about technology and love exploring how things work behind the scenes.  
+            I enjoy solving problems, working on new ideas and learning continuously.
+        </p>
+    </section>
+
+    <!-- STUDIES -->
+    <section id="studies">
+        <h2>Studies</h2>
+        <p>I completed high school at <b>Samarpan School</b> and am studying at <b>Noble University</b>.</p>
+
+        <table>
+            <tr><th>Subject</th><th>Description</th></tr>
+            <tr><td>Web Designing</td><td>HTML, CSS, UI concepts</td></tr>
+            <tr><td>C Programming</td><td>Basic coding logic</td></tr>
+            <tr><td>C++ Programming</td><td>OOP concepts</td></tr>
+            <tr><td>DBMS</td><td>SQL & database concepts</td></tr>
+            <tr><td>IT Programming</td><td>Software basics</td></tr>
+        </table>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <h2>Skills</h2>
+
+        <table>
+            <tr>
+                <th>Technical Skills</th>
+                <th>Soft Skills</th>
+            </tr>
+            <tr>
+                <td>
+                    - HTML, CSS <br>
+                    - C Programming <br>
+                    - C++ <br>
+                    - SQL Basics <br>
+                    - Problem Solving
+                </td>
+                <td>
+                    - Teamwork <br>
+                    - Creativity <br>
+                    - Communication <br>
+                    - Fast Learner <br>
+                    - Adaptability
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="projects">
+            <div class="project-card">
+                <h3>🌐 Portfolio Website</h3>
+                <p>Responsive personal portfolio with animations and theme toggle.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>📦 C++ Management System</h3>
+                <p>Console-based project using OOP principles.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>💾 Student DBMS</h3>
+                <p>A database for storing student records using SQL.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAREER -->
+    <section id="career">
+        <h2>Career</h2>
+        <p>
+            I aim to build a strong career in software development, focusing on full-stack 
+            development and exploring advanced fields like cloud computing and AI.
+        </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p><b>Email:</b> your-email@mail.com</p>
+        <p><b>LinkedIn:</b> your-link</p>
+        <p><b>GitHub:</b> your-link</p>
+    </section>
+
+</div>
+
+<!-- JAVASCRIPT (THEME SWITCHER) -->
+<script>
+function toggleTheme() {
+    const body = document.body;
+    const btn = document.querySelector('.theme-toggle');
+
+    body.classList.toggle('light-theme');
+
+    btn.textContent = body.classList.contains('light-theme') ? "🌞 Light" : "🌙 Dark";
+
+    localStorage.setItem("theme", body.classList.contains('light-theme') ? "light" : "dark");
+}
+
+// Load saved theme
+window.onload = () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+        document.body.classList.add("light-theme");
+        document.querySelector(".theme-toggle").textContent = "🌞 Light";
+    }
+};
+</script>
+
+</body>
+</html>
